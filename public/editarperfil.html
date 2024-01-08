@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="profile">
+    <div class="column-1">
+        <img src="css/imgs/perfil.png" alt="Foto de Perfil" class="profile-image">
+    </div>
+    <div class="column-2">
+        <form id="save-profile-form" class="form-container" >
+            <h2> Modo de Edição</h2>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="data-nascimento">Data de Nascimento:</label>
+                <input type="date" id="data-nascimento" name="data-nascimento" required>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="button" class= "save-button-profile" id="botao-salvar" onclick="salvarPerfil(event)">Salvar</button>
+                <button type="button" class= "back-button-profile" id="botao-voltar" onclick="voltar()">Voltar</button>
+            </div>
+        </form>
+    </div>
+    <script src="js/loadHeader.js" type="text/javascript"></script>
+    <script src="js/readForm.js" type="text/javascript"></script>
+</body>
+
+</html>

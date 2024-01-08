@@ -1,0 +1,43 @@
+
+body.home{
+    background-color: white;
+
+}
+.home-container {
+    position: relative;
+    max-width: 883px; /* Largura do SVG */
+    margin: 0 auto; /* Centralizar o container */
+  }
+.content {
+    display: flex; /* Usar flexbox para posicionar SVG e imagem */
+    align-items: center; /* Alinhar os itens verticalmente */
+    margin-right: 20px; /* Espaçamento entre o SVG e a imagem */
+}
+  /* Estilos para sobrepor o texto sobre a imagem */
+.texto-sobre-imagem-idoso {
+    position: absolute;
+    top: 50%; /* Ajuste para posicionar no centro vertical */ 
+    left: 30%;/* Ajuste para posicionar no centro horizontal */
+    transform: translate(-40%, -50%); /* Centralizar o texto no meio do container */
+    text-align: center; /* Centralizar o texto horizontalmente */
+    color: rgb(7, 7, 7); /* Cor do texto */
+  }
+.texto-sobre-imagem-lady {
+    position: absolute;
+    top: 50%; /* Ajuste para posicionar no centro vertical */ 
+    left: 50%;/* Ajuste para posicionar no centro horizontal */
+    transform: translate(-20%, -50%); /* Centralizar o texto no meio do container */
+    text-align: center; /* Centralizar o texto horizontalmente */
+    color: rgb(7, 7, 7); /* Cor do texto */
+  }
+h1.home{
+    margin-top: 100px;
+    color: #0E0838;
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+}
+h2.home{
+    color: #0E0838;
+}
+

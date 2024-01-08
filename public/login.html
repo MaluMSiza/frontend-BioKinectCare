@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+        
+            <img src="css/imgs/welcome.png" alt="Welcome" class="welcome-image">
+            <div class="login-container">
+            <img src="css/imgs/logo.png" alt="Logotipo" class="logo-login">
+            <form id="loginForm">
+                <input type="text" placeholder="Nome de usuário" required>
+                <input type="password" placeholder="Senha" required>
+                <div class="forgot-password">
+                    <a href="#">Esqueci a senha</a>
+                </div>
+                <button class="login-button" type="submit">Entrar</button>
+                <button class="register-button" type="submit">Registrar</button>
+            </form>
+        </div>  
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const loginForm = document.getElementById('loginForm');
+        
+                loginForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Previne o envio padrão do formulário
+        
+                    // Redirecionamento para home.html
+                    window.location.href = 'home.html';
+                });
+            });
+        </script>        
+</body>
+</html>

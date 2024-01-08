@@ -1,0 +1,115 @@
+/* Estilos para a página perfil.html */
+body.profile {
+    display: flex;
+    margin-top: 100px;
+}
+.column-1 {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-image {
+    width: 350px;
+    height: 350px;
+    margin-top: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.column-2 {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.column-2 h2{
+    color: black;
+}
+.form-container {
+    display: flex;
+    width: 656px;
+    height: 595px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center; /* Centralizar verticalmente */
+    gap: 10px;
+    flex-shrink: 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    border-left: 20px solid #F04D08;
+    background: #FDFDFD;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%; /* Ocupa toda a largura disponível */
+}
+select option {
+    color: black; /* Define a cor do texto */
+}
+.form-group label {
+    flex: 0 0 auto; /* Ajusta a largura conforme o conteúdo */
+    padding-right: 10px;
+    color: black;
+    font-weight: bold;
+    text-align: left; /* Alinhamento à esquerda */
+}
+.form-group input,
+.form-group select {
+    flex: 1; /* Ocupa o espaço restante */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: black;
+    text-align: right; /* Alinhamento à direita */
+}
+
+.edit-profile-button{
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 30px; /* Espaço acima do botão */
+    display: flex;
+    height: 65px;
+    padding: 10px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+    background: #FF7313;
+    border-color: transparent;
+}
+.button-container {
+    display: flex;
+    width: 100%;
+}
+.back-button-profile,
+.save-button-profile {
+    flex: 1; 
+    width: 90%;
+    height: 50px;
+    margin: 10px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-color: transparent;
+}
+.back-button-profile {
+    background: #ff1313;
+   
+}
+.save-button-profile {
+    background: #13ff13;
+}
+.edit-profile-button:hover, .back-button-profile:hover, .save-button-profile:hover {
+    background-color: rgba(17, 1, 1, 0.884);
+}
