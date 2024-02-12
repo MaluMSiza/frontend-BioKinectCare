@@ -12,13 +12,13 @@
 body, form {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Estilização do fundo preto */
 body {
     background-color: #0E0838; 
     font-family: 'JetBrains Mono', monospace;
-    margin-top: 50px;
 }
 h2{
     align-items: center;
