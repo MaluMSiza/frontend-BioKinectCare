@@ -14,6 +14,14 @@ expressApp.get('/', (req, res) => {
 });
 
 // Adicione outras rotas aqui conforme necessário
+// res.writeHead(200, {'Content-Type': 'text/html'});
+// fs.readFile('calibrar.html', 'utf8', (err, data) => {
+//   if (err) {
+//     res.end('Error loading HTML file.');
+//     return;
+//   }
+//   res.end(data);
+// });
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({

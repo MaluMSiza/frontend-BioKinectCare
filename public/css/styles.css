@@ -3,10 +3,11 @@
 @import url('games.css');
 @import url('header.css');
 @import url('sensor.css');
-@import url('home.css');
 @import url('progressochart.css');
-@import url('Chatbot.css');
 @import url('perfil.css');
+@import url('editperfil.css'); 
+@import url('home.css');
+@import url('calibrate.css');
 
 /* Reset de estilos para remover margens e preenchimento padrão */
 body, form {
@@ -22,6 +23,6 @@ body {
 }
 h2{
     align-items: center;
-    color: white;
+    color: #0E0838;
     text-align: center;
 }

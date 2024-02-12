@@ -55,6 +55,13 @@ if (typeof ListSensors !== 'undefined') {
         button.append(image); // Adicionando a tag img dentro do button
         sensorContainer.append(button);
 
+        // Adiciona um evento de clique ao botão
+        $('#sensor-list').on('click', '.calibrate-button', function() {
+            // Redireciona para a página calibrar.html
+            console.log("apertou botao calibrar");
+            window.location.href = 'calibrar.html';
+        });
+
         $('#sensor-list').append(sensorContainer);
     }
 } else {
