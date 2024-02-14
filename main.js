@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -10,7 +10,7 @@ expressApp.use(express.static('public'));
 expressApp.use(bodyParser.json());
 
 expressApp.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+  res.sendFile(path.join(__dirname, 'public', 'gettingStarted.html'));
 });
 
 // Adicione outras rotas aqui conforme necessário
@@ -26,13 +26,17 @@ expressApp.get('/', (req, res) => {
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1200,
-    height: 600,
+    height: 600, 
+    frame: true,
+    backgroundColor: '#FFFFFF',
+    icon: path.join(__dirname,'public','css','imgs', 'logoDesktop.png'), // Caminho para o ícone do aplicativo
     webPreferences: {
       nodeIntegration: true // Habilita a integração com Node.js no contexto da página web
     }
   });
-
+  // Remove o menu padrão
   mainWindow.loadURL('http://localhost:' + PORT);
+  Menu.setApplicationMenu(null);
 };
 
 app.whenReady().then(() => {

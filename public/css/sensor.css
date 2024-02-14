@@ -1,8 +1,8 @@
-body.sensor-page {
+/* body.sensor-page {
     background-color:#0E0838; 
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
-}
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais 
+} */
 
 .background-container {
     background-image: url('imgs/SENSORES.png');
@@ -20,7 +20,9 @@ body.sensor-page {
     display: flex;
     flex-direction: column;
     margin: 50px;
-    width: 1083.838px;
+    width: 100%;
+    max-width: 1200px;
+    min-width: 400px;
     padding: 20px;
     border-left: 20px solid #F04D08;
     background: #FDFDFD;

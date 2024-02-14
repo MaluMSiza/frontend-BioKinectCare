@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
+    <title>LOGIN</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-        
             <img src="css/imgs/LOGIN.jpg" alt="Welcome" class="welcome-image">
             <div class="login-container">
             <img src="css/imgs/logo.png" alt="Logotipo" class="logo-login">
@@ -21,17 +20,6 @@
                 <button class="register-button" type="submit">Registrar</button>
             </form>
         </div>  
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const loginForm = document.getElementById('loginForm');
-        
-                loginForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Previne o envio padrão do formulário
-        
-                    // Redirecionamento para home.html
-                    window.location.href = 'home.html';
-                });
-            });
-        </script>        
+        <script src="js/changePages.js" type="text/javascript"></script>      
 </body>
 </html>

@@ -5,7 +5,6 @@
 @import url('sensor.css');
 @import url('progressochart.css');
 @import url('perfil.css');
-@import url('editperfil.css'); 
 @import url('home.css');
 @import url('calibrate.css');
 
@@ -15,8 +14,6 @@ body, form {
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Estilização do fundo preto */
 body {
     background-color: #0E0838; 
     font-family: 'JetBrains Mono', monospace;

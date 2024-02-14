@@ -13,39 +13,40 @@
     </div>
     <div class="column-2">
         <form id="save-profile-form" class="form-container" >
-            <h2> Modo de Edição</h2>
+            <h2> EDITE SEU PERFIL</h2>
             <div class="form-group">
-                <label for="nome">Nome:</label>
+                <label for="nome">NOME:</label>
                 <input type="text" id="nome" name="nome" required>
             </div>
             <div class="form-group">
-                <label for="endereco">Endereço:</label>
+                <label for="endereco">ENDEREÇO:</label>
                 <input type="text" id="endereco" name="endereco" required>
             </div>
             <div class="form-group">
-                <label for="telefone">Telefone:</label>
+                <label for="telefone">TELEFONE:</label>
                 <input type="text" id="telefone" name="telefone" required>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email">EMAIL:</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="data-nascimento">Data de Nascimento:</label>
+                <label for="data-nascimento">DATA DE NASCIMENTO:</label>
                 <input type="date" id="data-nascimento" name="data-nascimento" required>
             </div>
             <div class="form-group">
-                <label for="sexo">Sexo:</label>
+                <label for="sexo">SEXO:</label>
                 <select id="sexo" name="sexo" required>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
                     <option value="outro">Outro</option>
                 </select>
             </div>
-            <div class="button-container">
-                <button type="button" class= "back-button-profile" id="botao-voltar" onclick="voltar()">Voltar</button>
-                <button type="button" class= "save-button-profile" id="botao-salvar" onclick="salvarPerfil(event)">Salvar</button>
-                
+            <div class="form-group">
+                <div class="button-container">
+                    <button type="button" class= "back-button-profile" id="botao-voltar" onclick="voltar()">VOLTAR</button>
+                    <button type="button" class= "save-button-profile" id="botao-salvar" onclick="salvarPerfil(event)">SALVAR</button>
+                </div>
             </div>
         </form>
     </div>

@@ -65,15 +65,40 @@
         <h2>Lembre-se de salvar! Bom jogos!</h2>
         <button class="save-button" type="submit">CALIBRAR E SALVAR</button>
 
-        <script src="js/plotRealTime.js"></script>
+        <!-- <script src="js/plotRealTime.js"></script> -->
     </div>
 
     <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            console.log(results)
+            if (!results) return null;
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter informações do sensor da URL
+            console.log('entro2');
+            const status = getParameterByName('status');
+            const titulo = getParameterByName('sensorId');
+            const ativacao = getParameterByName('activationPoint');
+        
+            // Atualizar os campos correspondentes com as informações do sensor
+            document.getElementById('statusInput').value = status;
+            document.getElementById('tituloInput').value = titulo;
+            document.getElementById('ativacaoInput').value = ativacao;
+        });
+        
         function voltar() {
-            // Redireciona para a página calibrar.html
+            // Redireciona para a página sensores.html
             window.location.href = 'sensores.html';
             console.log("Botão Voltar pressionado");
         }
     </script>
+    <script src="js/plotRealTime.js" type="text/javascript"></script>
 </body>
 </html>

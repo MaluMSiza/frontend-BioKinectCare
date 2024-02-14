@@ -14,7 +14,6 @@ const chart = new Chart(ctx, {
   options: {
     responsive: true,
     maintainAspectRatio: false,
-    // Define a largura máxima e altura máxima do gráfico
     maxWidth: 900,
     maxHeight: 400
   }
