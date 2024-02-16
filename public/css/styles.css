@@ -2,18 +2,11 @@
 @import url('games.css');
 @import url('header.css');
 @import url('sensor.css');
-<<<<<<< Updated upstream
-@import url('home.css');
-@import url('progressochart.css');
-@import url('Chatbot.css');
-@import url('perfil.css');
-=======
 @import url('progressochart.css');
 @import url('perfil.css');
 @import url('calibrate.css');
 @import url('home.css');
 @import url('paginaInicial.css');
->>>>>>> Stashed changes
 
 /* Reset de estilos para remover margens e preenchimento padrão */
 body,
@@ -23,10 +16,6 @@ form {
     box-sizing: border-box;
 }
 
-<<<<<<< Updated upstream
-/* Estilização do fundo preto */
-=======
->>>>>>> Stashed changes
 body {
     background-color: #0E0838;
     font-family: 'JetBrains Mono', monospace;

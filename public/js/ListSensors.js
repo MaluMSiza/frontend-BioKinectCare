@@ -1,5 +1,4 @@
-
-var ListSensors = [
+const ListSensors = [
     {
         "id": 1,
         "status": "ACTIVE",
@@ -24,109 +23,70 @@ var ListSensors = [
         "id": 5,
         "status": "INACTIVE",
         "activation_point": 0.4
-    } 
-
+    }
 ];
 
-$(document).ready(function() {
-if (typeof ListSensors !== 'undefined') {
-    
-    for (var i = 0; i < ListSensors.length; i++) {
-        var sensor = ListSensors[i];
+function renderSensors() {
+    const sensorsBody = document.createElement('div');
+    sensorsBody.className = 'content-container';
 
-        var sensorContainer = $('<div class="sensor-container"></div>');
+    ListSensors.forEach(sensor => {
+        const sensorsContainer = document.createElement('div');
+        sensorsContainer.className = 'sensor-container';
 
-        var sensorId = $('<h1 class="sensor"> SENSOR: ' + sensor.id + '</h1>');
-        sensorContainer.append(sensorId);
+        const labelsDiv = document.createElement('div');
+        const buttonsDiv = document.createElement('div');
 
-        var sensorStatus = $('<h2 class="sensor">' + sensor.status  + '</h2>');
-        sensorContainer.append(sensorStatus);
+        const sensorId = document.createElement('h1');
+        sensorId.className = 'sensor';
+        sensorId.textContent = 'SENSOR: ' + sensor.id;
 
-        if (sensor.status === "INACTIVE") {
-            sensorStatus.css('color', 'red');
-        } else {
-            sensorStatus.css('color', 'green');
-        }
-<<<<<<< Updated upstream
-        var sensorPoint = $('<h2 class="sensor"> Ponto de Ativação: ' + sensor.activation_point + ' milivoltz </h2>');
-        sensorContainer.append(sensorPoint);
+        const sensorStatus = document.createElement('h2');
+        sensorStatus.className = 'sensor';
+        sensorStatus.textContent = sensor.status;
+        sensorStatus.style.color = (sensor.status === 'INACTIVE') ? 'red' : 'green';
 
-        var button = $('<button class="calibrate-button"></button>'); // Criando um elemento button
-        var image = $('<img src="css/imgs/confg.png" alt="Configurações">'); // Criando a tag img com a imagem desejada
-        button.append(image); // Adicionando a tag img dentro do button
-        sensorContainer.append(button);
+        const sensorActivationPoint = document.createElement('h2');
+        sensorActivationPoint.className = 'sensor';
+        sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivoltz';
 
-        $('#sensor-list').append(sensorContainer);
-    }
-} else {
-    console.error('ListSensor não está definido. Verifique o conteúdo do arquivo.');
-}
-});
-=======
-        const sensorsBody = document.createElement('div');
-        sensorsBody.className = 'content-container';
-        // Para cada sensor no JSON, cria um elemento HTML correspondente e adiciona ao container
-        sensors.forEach(sensor => {
-            const sensorsContainer = document.createElement('div');
-            sensorsContainer.className = 'sensor-container';
-            
-            const labelsDiv = document.createElement('div');
-            const buttonsDiv = document.createElement('div');
+        const calibrateButton = document.createElement('button');
+        calibrateButton.className = 'primary-button sensorButton';
+        calibrateButton.textContent = 'CALIBRAR';
 
-            const sensorId = document.createElement('h1');
-            sensorId.id = 'sensorId'
-            sensorId.className = 'sensor'
-            sensorId.textContent = 'SENSOR: ' + sensor.id;
-            
-            const sensorStatus = document.createElement('h2');
-            sensorStatus.id = 'sensorStatus'
-            sensorStatus.className = 'sensor'
-            sensorStatus.textContent = sensor.status;
-            sensorStatus.style.color = (sensor.status === 'INACTIVE') ? 'red' : 'green';
-            
-            const sensorActivationPoint = document.createElement('h2');
-            sensorActivationPoint.id = 'sensorActivPoint'
-            sensorActivationPoint.className = 'sensor'
-            sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivoltz';
+        const detailsButton = document.createElement('button');
+        detailsButton.className = 'primary-button detailsButton';
+        detailsButton.textContent = 'DETALHES';
 
-            const calibrateButton = document.createElement('button');
-            calibrateButton.id = 'sensorButton';
-            calibrateButton.className= 'primary-button sensorButton';
-            calibrateButton.textContent='CALIBRAR';
+        labelsDiv.appendChild(sensorId);
+        labelsDiv.appendChild(sensorStatus);
+        labelsDiv.appendChild(sensorActivationPoint);
 
-            const detailsButton = document.createElement('button');
-            detailsButton.id = 'detailsButton';
-            detailsButton.className= 'primary-button detailsButton';
-            detailsButton.textContent='DETALHES';
+        buttonsDiv.appendChild(calibrateButton);
+        buttonsDiv.appendChild(detailsButton);
 
-            labelsDiv.appendChild(sensorId);
-            labelsDiv.appendChild(sensorStatus);
-            labelsDiv.appendChild(sensorActivationPoint);
+        sensorsContainer.appendChild(labelsDiv);
+        sensorsContainer.appendChild(buttonsDiv);
 
-            buttonsDiv.appendChild(calibrateButton);
-            buttonsDiv.appendChild(detailsButton);
-
-            sensorsContainer.appendChild(labelsDiv);
-            sensorsContainer.appendChild(buttonsDiv);
-            
-            sensorsBody.appendChild(sensorsContainer);
-        });
-
-        document.body.appendChild(sensorsBody);
-
-            
+        sensorsBody.appendChild(sensorsContainer);
     });
+
+    document.body.appendChild(sensorsBody);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderSensors();
+
     document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('sensorButton')) {
-                const sensorContainer = event.target.closest('.sensor-container');
-                const sensorId = sensorContainer.querySelector('#sensorId').textContent.split(':')[1].trim();
-                const sensorStatus = sensorContainer.querySelector('#sensorStatus').textContent;
-                const sensorActivationPoint = sensorContainer.querySelector('#sensorActivPoint').textContent.split(':')[1].trim();
-                console.log('Calibrando sensor:', sensorId);
-                console.log('Status:', sensorStatus);
-                console.log('Ponto de Ativação:', sensorActivationPoint);
-                window.location.href = `calibrar.html?sensorId=${encodeURIComponent(sensorId)}&status=${encodeURIComponent(sensorStatus)}&activationPoint=${encodeURIComponent(sensorActivationPoint)}`;
-            }
-        });
+        if (event.target.classList.contains('sensorButton')) {
+            const sensorContainer = event.target.closest('.sensor-container');
+            const sensorId = sensorContainer.querySelector('h1').textContent.split(':')[1].trim();
+            const sensorStatus = sensorContainer.querySelector('h2').textContent;
+            const sensorActivationPoint = sensorContainer.querySelectorAll('h2')[1].textContent.split(':')[1].trim();
+            console.log('Calibrando sensor:', sensorId);
+            console.log('Status:', sensorStatus);
+            console.log('Ponto de Ativação:', sensorActivationPoint);
+            window.location.href = `calibrar.html?sensorId=${encodeURIComponent(sensorId)}&status=${encodeURIComponent(sensorStatus)}&activationPoint=${encodeURIComponent(sensorActivationPoint)}`;
+        }
+    });
 });
->>>>>>> Stashed changes

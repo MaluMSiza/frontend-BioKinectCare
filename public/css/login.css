@@ -33,18 +33,6 @@ form {
     /* Outros estilos do formulário */
 }
 /* Estilização dos campos de entrada */
-<<<<<<< Updated upstream
-input {
-    width: 100%;
-    padding-top: 10px;
-    margin-top: 10px ;
-    padding-bottom: 10px;
-    margin-bottom: 10px ;
-    border: none;
-    border-radius: 5px;
-    background-color: transparent;
-=======
 .login-container input {
->>>>>>> Stashed changes
     color: #ffffff;
 } 
