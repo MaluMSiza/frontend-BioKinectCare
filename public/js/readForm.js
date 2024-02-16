@@ -61,7 +61,3 @@ function salvarPerfil(event) {
         window.location.href = 'perfil.html';
     }
 }
-function voltar() {
-    event.preventDefault(); // Evita o comportamento padrão do formulário
-        window.location.href = 'perfil.html';
-}

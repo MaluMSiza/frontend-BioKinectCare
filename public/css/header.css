@@ -3,7 +3,7 @@
     width: 164px;
     height: 44px;
     flex-shrink: 0;
-
+    display: block;
 }
 .nav-box {
     background-color: #0E0838;
@@ -17,28 +17,28 @@
 .main-nav {
     display: flex; 
     align-items: center;  
+    justify-content: space-around;
     list-style: none;
     margin: 5px 30px 5px 30px ;
 } 
 .main-nav li {
     margin-inline: 3%;
-    flex-grow: 1;
+    display: inline-block; 
+}
 
-}
-.main-nav li:last-child {
-    margin-right: 0; /* Remover margem do último item */
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-a {
+.main-nav a {
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
     color: #F04D08;
-    white-space: nowrap; /* Impede a quebra de linha */
 }
-a:hover {
+.main-nav a:hover {
     color: #ffffff;
+}
+/* Estilos para telas menores que 600px */
+@media (max-width: 600px) {
+    .main-nav li:not(:first-child) {
+        display: none; /* Esconde todos os itens do menu, exceto o primeiro (o logotipo) */
+    }
 }
 

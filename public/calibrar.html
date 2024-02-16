@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Calibragem</title>
+</head>
+
+<body class="body-calibrate">
+    <div class="body-form-calibrate">
+        <h1>MEU SENSOR</h1>
+        <form>
+            <div>
+                <label for="StatusInput">STATUS:</label>
+                <input class="input-calibrate" type="text" id="statusInput" name="status">
+            </div>
+            <div>
+                <label for="tituloInput">TÍTULO:</label>
+                <input class="input-calibrate" type="text" id="tituloInput" name="titulo">
+            </div>
+            <div>
+                <label for="ativacaoInput">LIMIAR DE ATIVAÇÃO (mV):</label>
+                <input class="input-calibrate" type="text" id="ativacaoInput" name="ativacao">
+            </div>
+            <div>
+                <label for="musculoCombobox">MÚSCULO:</label>
+                <select id="musculoCombobox" name="musculo" class="custom-select">
+                    <!-- Options for muscles -->
+                    <option value="muscle1">TRÍCEPS</option>
+                    <option value="muscle2">BÍCEPS</option>
+                </select>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>Selecione as Portas:</legend>
+                    <input type="checkbox" id="checkbox1" name="checkbox1">
+                    <label for="checkbox1">1</label><br>
+
+                    <input type="checkbox" id="checkbox2" name="checkbox2">
+                    <label for="checkbox2">2</label><br>
+
+                    <input type="checkbox" id="checkbox3" name="checkbox3">
+                    <label for="checkbox3">3</label><br>
+
+                    <input type="checkbox" id="checkbox4" name="checkbox4">
+                    <label for="checkbox4">4</label><br>
+
+                    <input type="checkbox" id="checkbox5" name="checkbox5">
+                    <label for="checkbox5">5</label><br>
+
+                    <input type="checkbox" id="checkbox6" name="checkbox6">
+                    <label for="checkbox6">6</label><br>
+                </fieldset>
+            </div>
+            <button class="back-button" type="button" onclick="voltar()">VOLTAR</button>
+    </div>
+    </form>
+    </div>
+    <div class="body-chart-calibrate">
+        <canvas id="chart" style="max-width: 900px; max-height: 400px; margin-bottom: 20px;"></canvas>
+        <label for="KeyboardInput" id="keyboardLabel">TECLADO (SELECIONE SUA TECLA):</label>
+        <input class="input-calibrate" type="text" id="keyboardInput" name="keyboard">
+        <h2>Lembre-se de salvar! Bom jogos!</h2>
+        <button class="save-button" type="submit">CALIBRAR E SALVAR</button>
+
+        <!-- <script src="js/plotRealTime.js"></script> -->
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            console.log(results)
+            if (!results) return null;
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter informações do sensor da URL
+            console.log('entro2');
+            const status = getParameterByName('status');
+            const titulo = getParameterByName('sensorId');
+            const ativacao = getParameterByName('activationPoint');
+
+            // Atualizar os campos correspondentes com as informações do sensor
+            document.getElementById('statusInput').value = status;
+            document.getElementById('tituloInput').value = titulo;
+            document.getElementById('ativacaoInput').value = ativacao;
+        });
+
+        function voltar() {
+            // Redireciona para a página sensores.html
+            window.location.href = 'sensores.html';
+            console.log("Botão Voltar pressionado");
+        }
+    </script>
+    <script src="js/plotRealTime.js" type="text/javascript"></script>
+</body>
+
+</html>

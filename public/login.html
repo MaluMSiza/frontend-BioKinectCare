@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
+<<<<<<< Updated upstream
         
             <img src="css/imgs/LOGIN IMG.jpg" alt="Welcome" class="welcome-image">
             <div class="login-container">
@@ -33,5 +36,37 @@
                 });
             });
         </script>        
+=======
+    <img src="css/imgs/LOGIN.jpg" alt="Welcome" class="welcome-image">
+    <div class="login-container">
+        <img src="css/imgs/logo.png" alt="Logotipo" class="logo-login">
+        <form id="loginForm">
+            <input type="text" placeholder="Nome de usuário">
+            <input type="password" placeholder="Senha"><br>
+            <button class="primary-button" type="submit">ENTRAR</button>
+            <button id="registerButton" class="secondary-button" type="button">REGISTRE-SE</button>
+        </form>
+    </div>
+    </div>
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2>CADASTRO</h2>
+            <label for="fullName">NOME COMPLETO</label>
+            <input type="text" id="fullName" placeholder="Nome Completo" class="custom-input">
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" placeholder="CPF">
+            <label for="birthdate">DATA DE NASCIMENTO</label>
+            <input type="date" id="birthdate">
+            <label for="password">SENHA</label>
+            <input type="password" id="password" placeholder="Senha">
+            <label for="confirmPassword">CONFIRMAR SENHA</label>
+            <input type="password" id="confirmPassword" placeholder="Confirmar Senha">
+            <button id="saveButton" class="primary-button">SALVAR</button>
+            <button id="closeButton" class="secondary-button">FECHAR</button>
+        </div>
+    </div>
+    <script src="js/changePages.js" type="text/javascript"></script>
+>>>>>>> Stashed changes
 </body>
+
 </html>

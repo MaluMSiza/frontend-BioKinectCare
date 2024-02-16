@@ -42,6 +42,7 @@ body.profile {
     border-left: 20px solid #F04D08;
     background: #FDFDFD;
 }
+<<<<<<< Updated upstream
 .form-group {
     display: flex;
     align-items: center;
@@ -113,3 +114,6 @@ select option {
 .edit-profile-button:hover, .back-button-profile:hover, .save-button-profile:hover {
     background-color: rgba(17, 1, 1, 0.884);
 }
+=======
+
+>>>>>>> Stashed changes

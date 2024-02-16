@@ -1,18 +1,26 @@
 .chart-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1083px;
-    height: 501px;
+    margin: 2em;
     padding: 20px;
     border-left: 20px solid #F04D08;
     background: #FDFDFD;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     align-items: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    font-size: 1em; /* Tamanho de fonte padrão */
+}
+
+@media (min-width: 1000px) {
+    .chart-container {
+        aspect-ratio: 2/1; /* Ratio de 2 para 1 para telas maiores que 1000px */
+        font-size: 1.5em; /* Tamanho de fonte maior para telas maiores */
+    }
+}
+
+/* Media query para telas menores ou iguais a 1000px */
+@media (max-width: 1000px) {
+    .chart-container {
+        aspect-ratio: 1/1; /* Ratio de 1 para 1 para telas menores ou iguais a 1000px */
+        font-size: 1em; /* Tamanho de fonte menor para telas menores */
+    }
 }
 
 .chart-container h1 {
@@ -23,10 +31,7 @@
 }
 
 .chart-container h2 {
-    margin: 0; /* Remove margem padrão */
     color: #0E0838;
-    font-size: 18px;
-    text-align: left; /* Alinha o texto à esquerda */
-    align-self: flex-start; /* Alinha o h2 à esquerda */
-    margin-top: 50px;
+    font-size: 1em; /* Tamanho de fonte padrão para h2 */
+    margin-top: 2em; /* Margem superior maior para h2 */
 }
