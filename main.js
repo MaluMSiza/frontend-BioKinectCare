@@ -10,7 +10,8 @@ expressApp.use(express.static('public'));
 expressApp.use(bodyParser.json());
 
 expressApp.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'gettingStarted.html'));
+
+  res.sendFile(path.join(__dirname, 'public', 'paginaInicial.html'));
 });
 
 // Adicione outras rotas aqui conforme necessário

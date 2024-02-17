@@ -54,7 +54,7 @@ $(document).ready(function() {
             gameContainer.append(gameDesc);
 
             // Adicione o botão "Jogar"
-            var playButton = $('<button>ACESSAR</button>');
+            var playButton = $('<button class="primary-button">ACESSAR</button>');
             gameContainer.append(playButton);
 
             // Adicione a div do jogo à lista de jogos

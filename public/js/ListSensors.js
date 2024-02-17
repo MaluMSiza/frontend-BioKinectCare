@@ -1,81 +1,92 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    function readSensorsJSON(callback) {
-        // Caminho relativo para o arquivo JSON
-        const filePath = 'json/sensores.json';
-
-        // Lê o arquivo JSON de forma assíncrona
-        fetch(filePath)
-            .then(response => response.json())
-            .then(data => callback(null, data))
-            .catch(error => callback(error, null));
+const ListSensors = [
+    {
+        "id": 1,
+        "status": "ACTIVE",
+        "activation_point": 0.75
+    },
+    {
+        "id": 2,
+        "status": "INACTIVE",
+        "activation_point": 0.25
+    },
+    {
+        "id": 3,
+        "status": "ACTIVE",
+        "activation_point": 0.9
+    },
+    {
+        "id": 4,
+        "status": "ACTIVE",
+        "activation_point": 0.6
+    },
+    {
+        "id": 5,
+        "status": "INACTIVE",
+        "activation_point": 0.4
     }
+];
 
-    // Usa a função para ler o arquivo JSON de sensores e montar o HTML
-    readSensorsJSON((err, sensors) => {
-        if (err) {
-            // Se houver um erro, exibe no console
-            console.error('Erro ao ler o arquivo JSON de sensores:', err);
-            return;
+function renderSensors() {
+    const sensorsBody = document.createElement('div');
+    sensorsBody.className = 'content-container';
+
+    ListSensors.forEach(sensor => {
+        const sensorsContainer = document.createElement('div');
+        sensorsContainer.className = 'sensor-container';
+
+        const labelsDiv = document.createElement('div');
+        const buttonsDiv = document.createElement('div');
+
+        const sensorId = document.createElement('h1');
+        sensorId.className = 'sensor';
+        sensorId.textContent = 'SENSOR: ' + sensor.id;
+
+        const sensorStatus = document.createElement('h2');
+        sensorStatus.className = 'sensor';
+        sensorStatus.textContent = sensor.status;
+        sensorStatus.style.color = (sensor.status === 'INACTIVE') ? 'red' : 'green';
+
+        const sensorActivationPoint = document.createElement('h2');
+        sensorActivationPoint.className = 'sensor';
+        sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivoltz';
+
+        const calibrateButton = document.createElement('button');
+        calibrateButton.className = 'primary-button sensorButton';
+        calibrateButton.textContent = 'CALIBRAR';
+
+        const detailsButton = document.createElement('button');
+        detailsButton.className = 'primary-button detailsButton';
+        detailsButton.textContent = 'DETALHES';
+
+        labelsDiv.appendChild(sensorId);
+        labelsDiv.appendChild(sensorStatus);
+        labelsDiv.appendChild(sensorActivationPoint);
+
+        buttonsDiv.appendChild(calibrateButton);
+        buttonsDiv.appendChild(detailsButton);
+
+        sensorsContainer.appendChild(labelsDiv);
+        sensorsContainer.appendChild(buttonsDiv);
+
+        sensorsBody.appendChild(sensorsContainer);
+    });
+
+    document.body.appendChild(sensorsBody);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderSensors();
+
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('sensorButton')) {
+            const sensorContainer = event.target.closest('.sensor-container');
+            const sensorId = sensorContainer.querySelector('h1').textContent.split(':')[1].trim();
+            const sensorStatus = sensorContainer.querySelector('h2').textContent;
+            const sensorActivationPoint = sensorContainer.querySelectorAll('h2')[1].textContent.split(':')[1].trim();
+            console.log('Calibrando sensor:', sensorId);
+            console.log('Status:', sensorStatus);
+            console.log('Ponto de Ativação:', sensorActivationPoint);
+            window.location.href = `calibrar.html?sensorId=${encodeURIComponent(sensorId)}&status=${encodeURIComponent(sensorStatus)}&activationPoint=${encodeURIComponent(sensorActivationPoint)}`;
         }
-        const sensorsBody = document.createElement('div');
-        // Para cada sensor no JSON, cria um elemento HTML correspondente e adiciona ao container
-        sensors.forEach(sensor => {
-            const sensorsContainer = document.createElement('div');
-            sensorsContainer.className = 'sensor-container';
-            
-            const sensorId = document.createElement('h1');
-            sensorId.id = 'sensorId'
-            sensorId.className = 'sensor'
-            sensorId.textContent = 'SENSOR: ' + sensor.id;
-            
-            const sensorStatus = document.createElement('h2');
-            sensorStatus.id = 'sensorStatus'
-            sensorStatus.className = 'sensor'
-            sensorStatus.textContent = sensor.status;
-            sensorStatus.style.color = (sensor.status === 'INACTIVE') ? 'red' : 'green';
-            
-            const sensorActivationPoint = document.createElement('h2');
-            sensorActivationPoint.id = 'sensorActivPoint'
-            sensorActivationPoint.className = 'sensor'
-            sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivoltz';
-
-            const calibrateButton = document.createElement('button');
-            calibrateButton.id = 'sensorButton';
-            calibrateButton.className= 'calibrate-button';
-            calibrateButton.textContent='CALIBRAR';
-
-            // // Crie um elemento img
-            // const img = document.createElement('img');
-            // // Defina o atributo src com o caminho da imagem
-            // img.src = 'css/imgs/confg.png';
-            // // Defina o atributo alt com o texto alternativo da imagem
-            // img.alt = 'Configurações';
-           
-            sensorsContainer.appendChild(sensorId);
-            sensorsContainer.appendChild(sensorStatus);
-            sensorsContainer.appendChild(sensorActivationPoint);
-            // calibrateButton.appendChild(img);
-            sensorsContainer.appendChild(calibrateButton);
-            console.log('Carregou contai');
-            sensorsBody.appendChild(sensorsContainer);
-        });
-
-        // Adiciona o container de sensores ao documento
-        document.body.appendChild(sensorsBody);
-
-        document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('calibrate-button')) {
-                const sensorContainer = event.target.parentElement;
-                const sensorId = sensorContainer.querySelector('#sensorId').textContent.split(':')[1].trim();
-                const sensorStatus = sensorContainer.querySelector('#sensorStatus').textContent;
-                const sensorActivationPoint = sensorContainer.querySelector('#sensorActivPoint').textContent.split(':')[1].trim();
-                console.log('Calibrando sensor:', sensorId);
-                console.log('Status:', sensorStatus);
-                console.log('Ponto de Ativação:', sensorActivationPoint);
-                window.location.href = `calibrar.html?sensorId=${encodeURIComponent(sensorId)}&status=${encodeURIComponent(sensorStatus)}&activationPoint=${encodeURIComponent(sensorActivationPoint)}`;
-            }
-        });
-        
     });
 });
