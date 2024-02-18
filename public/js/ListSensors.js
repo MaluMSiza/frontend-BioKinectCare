@@ -1,30 +1,48 @@
 const ListSensors = [
     {
         "id": 1,
-        "status": "ACTIVE",
+        "musculo": "BICEPS",
         "activation_point": 0.75
     },
     {
         "id": 2,
-        "status": "INACTIVE",
+        "musculo": "BICEPS",
         "activation_point": 0.25
     },
     {
         "id": 3,
-        "status": "ACTIVE",
+        "musculo": "TRICEPS",
         "activation_point": 0.9
     },
     {
         "id": 4,
-        "status": "ACTIVE",
+        "musculo": "TRICEPS",
         "activation_point": 0.6
     },
     {
         "id": 5,
-        "status": "INACTIVE",
+        "musculo": "BICEPS",
         "activation_point": 0.4
     }
 ];
+
+function loadHeader() {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            const headerContainer = document.createElement('div');
+            headerContainer.innerHTML = data;
+
+            // Adicione o conteúdo do cabeçalho ao início do corpo do documento
+            document.body.insertBefore(headerContainer, document.body.firstChild);
+            console.log('header carregada');
+
+            renderSensors();
+        })
+        .catch(error => console.error('Erro ao carregar o cabeçalho:', error));
+}
+
+document.addEventListener('DOMContentLoaded', loadHeader);
 
 function renderSensors() {
     const sensorsBody = document.createElement('div');
@@ -41,14 +59,13 @@ function renderSensors() {
         sensorId.className = 'sensor';
         sensorId.textContent = 'SENSOR: ' + sensor.id;
 
-        const sensorStatus = document.createElement('h2');
-        sensorStatus.className = 'sensor';
-        sensorStatus.textContent = sensor.status;
-        sensorStatus.style.color = (sensor.status === 'INACTIVE') ? 'red' : 'green';
+        const sensorMuscle = document.createElement('h2');
+        sensorMuscle.className = 'sensor';
+        sensorMuscle.textContent = sensor.musculo;
 
-        const sensorActivationPoint = document.createElement('h2');
-        sensorActivationPoint.className = 'sensor';
-        sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivoltz';
+        // const sensorActivationPoint = document.createElement('h2');
+        // sensorActivationPoint.className = 'sensor';
+        // sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivolts';
 
         const calibrateButton = document.createElement('button');
         calibrateButton.className = 'primary-button sensorButton';
@@ -59,8 +76,8 @@ function renderSensors() {
         detailsButton.textContent = 'DETALHES';
 
         labelsDiv.appendChild(sensorId);
-        labelsDiv.appendChild(sensorStatus);
-        labelsDiv.appendChild(sensorActivationPoint);
+        labelsDiv.appendChild(sensorMuscle);
+        // labelsDiv.appendChild(sensorActivationPoint);
 
         buttonsDiv.appendChild(calibrateButton);
         buttonsDiv.appendChild(detailsButton);
@@ -75,18 +92,45 @@ function renderSensors() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderSensors();
 
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('sensorButton')) {
+            document.getElementById('calibrarSensorModal').style.display = 'block';
+
             const sensorContainer = event.target.closest('.sensor-container');
             const sensorId = sensorContainer.querySelector('h1').textContent.split(':')[1].trim();
-            const sensorStatus = sensorContainer.querySelector('h2').textContent;
+            const sensorMusculo = sensorContainer.querySelector('h2').textContent;
             const sensorActivationPoint = sensorContainer.querySelectorAll('h2')[1].textContent.split(':')[1].trim();
-            console.log('Calibrando sensor:', sensorId);
-            console.log('Status:', sensorStatus);
-            console.log('Ponto de Ativação:', sensorActivationPoint);
-            window.location.href = `calibrar.html?sensorId=${encodeURIComponent(sensorId)}&status=${encodeURIComponent(sensorStatus)}&activationPoint=${encodeURIComponent(sensorActivationPoint)}`;
+
+            document.getElementById('sensorName').value = sensorId;
+            document.getElementById('ativacaoInput').value = sensorActivationPoint;
+
+            const musculoCombobox = document.getElementById('musculoCombobox');
+            for (let i = 0; i < musculoCombobox.options.length; i++) {
+                if (musculoCombobox.options[i].text === sensorMusculo) {
+                    musculoCombobox.selectedIndex = i;
+                    break;
+                }
+            }
         }
+    });
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('detailsButton')) {
+            document.getElementById('detailsSensorModal').style.display = 'block';
+        }
+    });
+
+    document.getElementById('newSensorButton').addEventListener('click', () => {
+        document.getElementById('newSensorModal').style.display = 'block';
+    });
+
+    document.getElementById('closeButtonDetails').addEventListener('click', () => {
+        document.getElementById('detailsSensorModal').style.display = 'none';
+    });
+    document.getElementById('closeButtonCalibra').addEventListener('click', () => {
+        document.getElementById('calibrarSensorModal').style.display = 'none';
+    });
+    document.getElementById('closeButtonNew').addEventListener('click', () => {
+        document.getElementById('newSensorModal').style.display = 'none';
     });
 });
