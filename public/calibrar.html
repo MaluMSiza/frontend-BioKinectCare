@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Calibragem</title>
 </head>
-
 <body class="body-calibrate">
     <div class="body-form-calibrate">
         <h1>MEU SENSOR</h1>
@@ -67,6 +65,7 @@
         <h2>Lembre-se de salvar! Bom jogos!</h2>
         <button class="save-button" type="submit">CALIBRAR E SALVAR</button>
 
+
         <script src="js/plotRealTime.js"></script>
     </div>
 
@@ -80,15 +79,12 @@
             if (!results) return null;
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
-
-
         document.addEventListener('DOMContentLoaded', () => {
             // Obter informações do sensor da URL
             console.log('entro2');
             const status = getParameterByName('status');
             const titulo = getParameterByName('sensorId');
             const ativacao = getParameterByName('activationPoint');
-
             // Atualizar os campos correspondentes com as informações do sensor
             document.getElementById('statusInput').value = status;
             document.getElementById('tituloInput').value = titulo;
@@ -103,5 +99,3 @@
     </script>
     <script src="js/plotRealTime.js" type="text/javascript"></script>
 </body>
-
-</html>

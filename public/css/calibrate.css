@@ -1,0 +1,106 @@
+.body-calibrate {
+    background-color:#ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-calibrate h1 {
+    color: #0E0838; /* Cor do texto */
+    font-size: 35px; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+}
+.body-form-calibrate{
+    width: 20%;
+    padding: 3rem;
+}
+.body-chart-calibrate {
+    margin: 30px;
+    width: 60%; /* Largura da coluna do gráfico */
+    height: 100%;
+    padding: 10px;
+}
+.body-calibrate label {
+    font-size: 14px; /* Tamanho da fonte */
+    color: rgb(2, 2, 2); /* Cor do texto */
+}
+#keyboardLabel{
+    text-align: center;
+    align-items: center;
+}
+
+.body-form-calibrate legend {
+    font-size: 15px; /* Tamanho da fonte */
+    color: rgb(2, 2, 2); /* Cor do texto */
+}
+.body-calibrate input[type="text"] {
+    max-width: 900px;
+    width: 100%;
+    border: 2px solid #FF7313; /* Cor do stroke */
+    background-color: transparent; /* Fundo transparente */
+    color: rgb(2, 2, 2); /* Cor do texto */
+    font-size: 20px; /* Tamanho da fonte */
+    padding: 5px 10px; /* Preenchimento interno */
+    border-radius: 4px; /* Borda arredondada */
+}
+
+
+.body-form-calibrate input[type="checkbox"] {
+    width: auto; /* Largura automática para os checkboxes */
+    margin: 5px 0; /* Espaçamento entre os checkboxes */
+}
+.body-form-calibrate fieldset {
+    width: 100%;
+    border: 2px solid #FF7313; /* Borda laranja */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Borda arredondada */
+    margin-bottom: 20px; /* Espaçamento abaixo do fieldset */
+}
+.body-form-calibrate .custom-select {
+    width: 100%;
+    margin: 20px;
+    border: 2px solid #FF7313; /* Borda laranja */
+    border-radius: 5px; /* Borda arredondada */
+    padding: 5px 25px 5px 10px; /* Espaçamento interno para o texto */
+    appearance: none; /* Remove o estilo padrão do sistema */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFA500" width="18px" height="18px"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Setinha personalizada */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    background-position: right 5px center; /* Posição da setinha */
+    background-size: 20px; /* Tamanho da setinha */
+}
+/* Estilos para os botões */
+.button-calibrate {
+    display: flex; /* Use Flexbox para alinhar os botões horizontalmente */
+    justify-content: space-between; /* Distribui o espaço disponível entre os botões */
+    width: 100%; /* Garante que a div ocupe toda a largura disponível */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+/* Estilos para o botão Voltar */
+.back-button {
+    width: 40%;
+    background-color: #ffffff00; /* Cor de fundo do botão secundário */
+    color: #F04D08; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border-color: #F04D08;
+    border-radius: 5px; /* Borda arredondada */
+}
+
+/* Estilos para o botão Salvar */
+.save-button {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #F04D08; /* Cor de fundo do botão primário */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Borda arredondada */
+}
+.back-button:hover {
+    background-color:  #f04e0865;
+}
+.save-button:hover {
+    background-color:  #fa5b05ac;
+}
+

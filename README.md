@@ -2,4 +2,8 @@
 
 npm init -y
 npm install express
-node server.js --Start
+npm install electron
+npm install socket.io
+----xx--node server.js --Start
+npm run electron --Start
+

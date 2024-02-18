@@ -31,10 +31,9 @@ body.profile {
 .form-container {
     display: flex;
     width: 656px;
-    height: 595px;
     padding: 20px;
     flex-direction: column;
-    align-items: center; /* Centralizar verticalmente */
+    align-items: center; 
     gap: 10px;
     flex-shrink: 0;
     border: 1px solid #ccc;

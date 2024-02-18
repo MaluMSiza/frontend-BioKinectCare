@@ -15,7 +15,6 @@ form {
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     background-color: #0E0838;
     font-family: 'JetBrains Mono', monospace;
@@ -23,7 +22,7 @@ body {
 
 h2 {
     align-items: center;
-    color: white;
+    color: #0E0838;
     text-align: center;
 }
 
@@ -115,6 +114,9 @@ input:focus {
     max-width: 400px;
     min-width: 250px;
 }
+#detailsSensorModal1{
+    max-width: 80%;
+}
 
 .modal-content label,
 .modal-content input,
@@ -139,3 +141,17 @@ input:focus {
     text-decoration: none;
     cursor: pointer;
 }
+
+.custom-select {
+    margin: 20px;
+    min-width: 10em;
+    border: 1px solid #FF7313;
+    border-radius: 5px; /* Borda arredondada */
+    padding: 5px 25px 5px 10px; /* Espaçamento interno para o texto */
+    appearance: none; /* Remove o estilo padrão do sistema */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFA500" width="18px" height="18px"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Setinha personalizada */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    background-position: right 5px center; /* Posição da setinha */
+    background-size: 20px; /* Tamanho da setinha */
+}
+/*

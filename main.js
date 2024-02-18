@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+
 const expressApp = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,6 +11,7 @@ expressApp.use(express.static('public'));
 expressApp.use(bodyParser.json());
 
 expressApp.get('/', (req, res) => {
+
   res.sendFile(path.join(__dirname, 'public', 'paginaInicial.html'));
 });
 

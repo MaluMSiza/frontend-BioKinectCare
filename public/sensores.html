@@ -1,21 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensores</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body class="sensor-page">
-    <button class="pulse-button">
+    <button class="pulse-button" id="newSensorButton">
         <span class="plus-symbol">+</span>
         <span class="tooltip"><B>NOVO SENSOR</B></span>
     </button>
+    <div id="newSensorModal" class="modal">
+        <div class="modal-content">
+            <h2>NOVO SENSOR</h2>
+            <label for="NewSensorName">NOME DO SENSOR</label>
+            <input type="text" id="NewSensorName" placeholder="Sensor X">
+            <label for="newMusculoCombobox">MÚSCULO:</label>
+            <select id="newMusculoCombobox" name="musculo" class="custom-select">
+                <option value="muscle1">TRÍCEPS</option>
+                <option value="muscle2">BÍCEPS</option>
+            </select>
+            <button id="saveButtonNew" class="primary-button">SALVAR</button>
+            <button id="closeButtonNew" class="secondary-button">FECHAR</button>
+        </div>
+    </div>
+    <div id="calibrarSensorModal" class="modal">
+        <div class="modal-content">
+            <h2>MEU SENSOR</h2>
+            <label for="sensorName">NOME DO SENSOR</label>
+            <input type="text" id="sensorName">
+            <label for="ativacaoInput">LIMIAR DE ATIVAÇÃO (mV):</label>
+            <input class="input-calibrate" type="text" id="ativacaoInput" name="ativacao">
+            <label for="musculoCombobox">MÚSCULO:</label>
+            <select id="musculoCombobox" name="musculo" class="custom-select">
+                <option value="muscle1">TRÍCEPS</option>
+                <option value="muscle2">BÍCEPS</option>
+            </select>
+            <label for="portaSelect">SELECIONE A PORTA:</label>
+            <select id="portaSelect" name="porta" class="custom-select">
+                <option value="1">PORTA 1</option>
+                <option value="2">PORTA 2</option>
+                <option value="3">PORTA 3</option>
+                <option value="4">PORTA 4</option>
+                <option value="5">PORTA 5</option>
+                <option value="6">PORTA 6</option>
+            </select>
+            <label for="KeyboardInput" id="keyboardLabel">TECLADO (SELECIONE SUA TECLA):</label>
+            <input class="input-calibrate" type="text" id="keyboardInput" name="keyboard">
+            <button id="saveButtonCalibra" class="primary-button">CALIBRAR E SALVAR</button>
+            <button id="closeButtonCalibra" class="secondary-button">FECHAR</button>
+        </div>
+    </div>
+    <div id="detailsSensorModal" class="modal">
+        <div class="modal-content" id="detailsSensorModal1">
+            <h2>DETALHES</h2>
+            <div class="body-chart-calibrate">
+                <canvas id="chart" style="width: 900px; max-height: 400px;"></canvas>
+                <script src="js/plotRealTime.js"></script>
+            </div>
+            <button id="closeButtonDetails" class="secondary-button">FECHAR</button>
+        </div>
+    </div>
     <script src="js/ListSensors.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="js/loadHeader.js" type="text/javascript"></script>
+    <!-- <script src="js/loadHeader.js" type="text/javascript"></script> -->
 </body>
 
 </html>

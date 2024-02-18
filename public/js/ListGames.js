@@ -29,6 +29,36 @@ var ListGames = [
         "title": "Minecraft",
         "description": "Crie seu próprio mundo, construa, explore e sobreviva em um ambiente pixelizado. Liberte sua criatividade e embarque em aventuras infindáveis neste universo sandbox.",
         "price": "$29.99"
+    },
+    {
+        "image": "css/imgs/jogos/img6.jpg",
+        "title": "PUBG",
+        "description": "Junte-se a um campo de batalha online e lute para ser o último sobrevivente neste jogo de sobrevivência intenso e cheio de ação.",
+        "price": "$29.99"
+    },
+    {
+        "image": "css/imgs/jogos/img7.jpg",
+        "title": "VERNAL EDGE",
+        "description": "Entre em um mundo futurista cheio de desafios e mistérios. Descubra segredos, lute contra inimigos e torne-se um mestre das lâminas neste jogo de ação e aventura.",
+        "price": "$29.99"
+    },
+    {
+        "image": "css/imgs/jogos/img8.jpg",
+        "title": "DESTINY2",
+        "description": "Explore vastos planetas, descubra poderes incríveis e defenda a última cidade segura da Terra contra ameaças alienígenas neste jogo de tiro em primeira pessoa emocionante.",
+        "price": "$29.99"
+    },
+    {
+        "image": "css/imgs/jogos/img9.jpg",
+        "title": "LETHAL COMPANY",
+        "description": "Entre no submundo do crime e torne-se um mestre dos negócios escuros. Engane seus rivais, construa seu império e torne-se uma lenda neste jogo de estratégia e simulação.",
+        "price": "$29.99"
+    },
+    {
+        "image": "css/imgs/jogos/img10.jpg",
+        "title": "WARFRAME",
+        "description": "Equipe seu Warframe e entre em batalhas épicas contra inimigos intergalácticos. Domine habilidades poderosas, explore um vasto universo e lute pela paz no sistema solar.",
+        "price": "$29.99"
     }
 ];
 

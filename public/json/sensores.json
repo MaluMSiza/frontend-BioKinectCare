@@ -1,0 +1,25 @@
+[{
+    "id": 1,
+    "status": "ACTIVE",
+    "activation_point": 0.75
+},
+{
+    "id": 2,
+    "status": "INACTIVE",
+    "activation_point": 0.25
+},
+{
+    "id": 3,
+    "status": "ACTIVE",
+    "activation_point": 0.9
+},
+{
+    "id": 4,
+    "status": "ACTIVE",
+    "activation_point": 0.6
+},
+{
+    "id": 5,
+    "status": "INACTIVE",
+    "activation_point": 0.4
+} ]

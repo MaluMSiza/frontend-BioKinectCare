@@ -1,2 +1,12 @@
-# Ignorar a pasta node_modules
+
+# Dependências
 node_modules/
+
+# Arquivos de build
+/build
+/dist
+/out
+
+# Arquivos de configuração sensíveis
+.env
+
