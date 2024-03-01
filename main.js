@@ -12,31 +12,20 @@ expressApp.use(bodyParser.json());
 
 expressApp.get('/', (req, res) => {
 
-  res.sendFile(path.join(__dirname, 'public', 'paginaInicial.html'));
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
-
-// Adicione outras rotas aqui conforme necessário
-// res.writeHead(200, {'Content-Type': 'text/html'});
-// fs.readFile('calibrar.html', 'utf8', (err, data) => {
-//   if (err) {
-//     res.end('Error loading HTML file.');
-//     return;
-//   }
-//   res.end(data);
-// });
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 600, 
+    width: 800,
+    height: 900, 
     frame: true,
     backgroundColor: '#FFFFFF',
-    icon: path.join(__dirname,'public','css','imgs', 'logoDesktop.png'), // Caminho para o ícone do aplicativo
+    icon: path.join(__dirname,'public','css','imgs', 'logoDesktop.png'),
     webPreferences: {
-      nodeIntegration: true // Habilita a integração com Node.js no contexto da página web
+      nodeIntegration: true 
     }
   });
-  // Remove o menu padrão
   mainWindow.loadURL('http://localhost:' + PORT);
   Menu.setApplicationMenu(null);
 };

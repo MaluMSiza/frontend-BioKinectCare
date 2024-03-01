@@ -1,4 +1,3 @@
-<!-- header.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,20 +9,27 @@
 </head>
 
 <body>
-    <nav class="nav-box">
-        <ul class="main-nav">
-            <li> <a href="Home.html">
-                    <img src="css/imgs/logo header.png" alt="Bio Kinect Care" class="logo">
-                </a></li>
-            <li><a href="games.html">JOGOS</a></li>
-            <li><a href="progresso.html">HISTÓRICO DE PROGRESSO</a></li>
-            <li><a href="sensores.html">SENSORES</a></li>
-            <!-- <li><a href="download.html">DOWNLOAD</a></li> -->
-            <li><a href="perfil.html">
-                    <img src="css/imgs/PERFILPROFILE.png" alt="Botão">
-                </a></li>
-        </ul>
-    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span>&#9660;</span>
+     </div>
+    <div class="menu-container">
+        <nav class="nav-box">
+            <ul class="main-nav">
+                <li>
+                    <a href="Home.html">
+                        <img src="css/imgs/logotipo.png" alt="Bio Kinect Care" class="logo">
+                    </a>
+                </li>
+                <li><a href="Home.html">GUIA DE USUÁRIO</a></li>
+                <li><a href="games.html">JOGOS</a></li>
+                <li><a href="progresso.html">HISTÓRICO DE PROGRESSO</a></li>
+                <li><a href="sensores.html">SENSORES</a></li>
+                <!-- <li><a href="download.html">DOWNLOAD</a></li> -->
+                <li><a href="perfil.html"> PERFIL</a></li>
+                <li><a href="login.html">LOGOUT</a></li>
+            </ul>
+        </nav>
+    </div>
 </body>
 
 </html>

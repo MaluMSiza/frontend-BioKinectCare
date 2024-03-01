@@ -1,20 +1,14 @@
-/* Estilização do container de login */
-.welcome-image {
-    flex-shrink: 0;
-    position: fill;
-    background-color: black;
-    width: 80%; /* 75% da largura da tela */
-    height: 100vh; /* 100% da altura da tela */
+#loginBody{
+    background-color: #040D12;
 }
 .logo-login  {
-    width: 100%; /* Preenche horizontalmente */
-    height: auto; /* Mantém a proporção da imagem */
+    width: 100%; 
+    height: auto; 
     flex-shrink: 0;
     padding-bottom: 20px;
 }
 .login-container {
-    flex-shrink: 0;
-    background: #0E0838;
+    background: #040D12;
     min-width: 250px;
     padding: 30px;
     width: 20%;
@@ -28,11 +22,3 @@
     justify-content: center;
 }
 
-/* Estilização do formulário */
-.login-container form {
-    width: 100%; /* Preenche horizontalmente */
-}
-/* Estilização dos campos de entrada */
-.login-container input {
-    color: #ffffff;
-} 

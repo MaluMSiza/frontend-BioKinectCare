@@ -1,9 +1,7 @@
-
 .sensor-page {
-    background-color: #0E0838;
+    background-color: #040D12;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr); 
-    margin-top: 2rem;
     margin-right: 2rem;
     overflow-x: hidden;
 }
@@ -12,25 +10,20 @@
     display: grid;
     gap: 10px;
 }
-
 .sensor-container {
     display: grid;
-    grid-template-columns: auto minmax(0, 80px); /* Primeira coluna se ajusta ao conteúdo, segunda coluna com tamanho máximo de 80px */
-    grid-gap: 1rem; /* Espaçamento entre as colunas */
+    grid-template-columns: auto minmax(0, 80px); 
+    grid-gap: 1rem; 
     padding: 1rem;
     min-width: 400px;
-    border-left: 20px solid #F04D08;
+    border-left: 20px solid #5C8374;
     background: #FDFDFD;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.3);
 }
-
-/* Efeito de aumento ao passar o mouse */
 .sensor-container:hover {
     transform: scale(1.05);
-    /* Aumenta o tamanho em 5% */
     box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.4);
-    /* Adiciona uma sombra mais proeminente */
 }
 
 h1.sensor {
@@ -48,22 +41,19 @@ h2.sensor {
     font-weight: 400;
     text-align: left;
 }
-
-
 .pulse-button {
     grid-column: 1;
     width: 60px;
     height: 60px;
     margin: 4rem;
     border-radius: 50%;
-    background-color: #F04D08;
+    background-color: #5C8374;
     border: none;
     outline: none;
     cursor: pointer;
     position: relative;
     animation: pulse 2s infinite;
 }
-
 .plus-symbol {
     color: white;
     font-size: 36px;
@@ -72,19 +62,17 @@ h2.sensor {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .tooltip {
     visibility: hidden;
     width: 120px;
     background-color: rgb(255, 255, 255);
-    color: #F04D08;
+    color: #5C8374;
     text-align: center;
     padding: 5px;
     border-radius: 6px;
     position: absolute;
     z-index: 1;
     top: calc(100% + 5px);
-    /* Posiciona o tooltip abaixo do botão */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -96,16 +84,13 @@ h2.sensor {
     opacity: 1;
 }
 .pulse-button:hover {
-    background-color: white; /* Altera a cor de fundo para branco */
+    background-color: white; 
     animation: none;
-    transform: scale(1.2); /* Aumenta o tamanho em 2% */
+    transform: scale(1.2); 
 }
-  
   .pulse-button:hover .plus-symbol {
-    color: #F04D08; /* Altera a cor do símbolo "+" para laranja */
+    color: #5C8374;
 }
-  
-
 @keyframes pulse {
     0% {
         transform: scale(1);
