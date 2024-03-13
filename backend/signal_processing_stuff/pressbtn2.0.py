@@ -2,6 +2,7 @@ import serial
 import time
 import pyautogui
 import threading
+import keyboard
 
 # Configuração da porta serial
 PORT = 'COM4'  # Altere para a porta correta no seu sistema
@@ -11,8 +12,17 @@ TIMEOUT = 1
 # Thresholds para cada sensor
 thresholds = [436.5, 436.5, 436.5, 436.5, 436.5, 436.5]
 
+#Captura um comando dado no teclado e retorna o nome da tecla pressionada.
+def getKeys():
+    keysList = []
+    for i in range(len(thresholds)):
+        print("Pressione a tecla " + i)
+        key_pressed = keyboard.read_key(suppress=True)
+        keysList.append(key_pressed)
+    return keysList
+
 # Teclas associadas a cada sensor
-keys = ['q', 'w', 'e', 'r', 'd', 'f']
+keys = getKeys()
 
 def read_sensor_data(ser):
     """Lê uma linha de dados do Arduino e converte para uma lista de valores de sensores."""
