@@ -1,11 +1,3 @@
-//da paginal inicial/getting started para login
-document.addEventListener('DOMContentLoaded', function() {
-    const button = document.querySelector('.gs-my-button');
-    button.addEventListener('click', function() {
-        window.location.href = 'login.html'; // Redireciona para login.html quando o botão é clicado
-    });
-});
-
 
 //EVENTOS DE CADASTRO, LOGIN
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.getElementById('saveButton');
 
     loginForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Previne o envio padrão do formulário
-        // Redirecionamento para home.html
+        event.preventDefault(); 
         window.location.href = 'home.html';
     });
     registerButton.addEventListener('click', () => {
@@ -27,29 +18,23 @@ document.addEventListener('DOMContentLoaded', function() {
         registerModal.style.display = 'none';
     });
     saveButton.addEventListener('click', () => {
-        // Captura dos dados do formulário de registro
         const fullName = document.getElementById('fullName').value;
-        const cpf = document.getElementById('cpf').value;
+        const cpf = document.getElementById('userName').value;
         const birthdate = document.getElementById('birthdate').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
-        // Verifica se as senhas coincidem
         if (password !== confirmPassword) {
             alert("As senhas não coincidem!");
             return;
         }
-
-        // Constrói o objeto com os dados do novo paciente
         const paciente = {
             "nome_completo": fullName,
-            "cpf": cpf,
+            "cpf": usserName,
             "data_nascimento": birthdate,
             "senha": password,
-            // Adicione outros campos, se necessário
         };
 
-        // Envia os dados para o servidor
         fetch('/api/pacientes', {
             method: 'POST',
             headers: {
@@ -59,8 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            alert(data.mensagem); // Exibe a mensagem de retorno do servidor
-            // Fecha o modal se o paciente foi inserido com sucesso
+            alert(data.mensagem); 
             if (data.mensagem === "Paciente inserido com sucesso") {
                 registerModal.style.display = 'none';
             }

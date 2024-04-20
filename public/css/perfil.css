@@ -1,43 +1,20 @@
-/* Estilos para a página perfil.html */
-body.profile {
+.profile-content {
     display: flex;
-    margin-top: 100px;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
 }
-.column-1 {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.profile-image {
-    width: 350px;
-    height: 350px;
-    margin-top: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.column-2 {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
-.column-2 h2{
-    color: black;
-}
+
 .form-container {
     display: flex;
-    width: 656px;
+    max-width: 656px;
+    min-width: 350PX;
     padding: 20px;
     flex-direction: column;
     align-items: center; 
     gap: 10px;
     flex-shrink: 0;
-    border: 1px solid #ccc;
     border-radius: 8px;
-    border-left: 20px solid #F04D08;
+    border-left: 20px solid #5C8374;
     background: #FDFDFD;
 }

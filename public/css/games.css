@@ -3,9 +3,8 @@
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
-    margin-top: 100px;
+    margin-left: 100px;
 }
-/* Estilização do contêiner do jogo */
 .game-container {
     display:grid;
     justify-content:center;
@@ -15,20 +14,18 @@
     margin: 1rem;
     border-radius: 1rem;
     background: #FDFDFD;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adicionando transições suaves */
-    box-shadow: 0px 0px 8px 2px #ff71138d;; /* Sombra inicial */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0px 0px 8px 2px #5C8374; 
 }
 @media screen and (max-width: 768px) {
   .game-container h1 {
     display: none;
   }
 }
-  /* Efeito de aumento ao passar o mouse */
 .game-container:hover {
-    transform: scale(1.05); /* Aumenta o tamanho em 5% */
+    transform: scale(1.05); 
     box-shadow: 0px 0px 15px 5px #00ff0088; 
  }
-/* Estilização da imagem do jogo dentro do contêiner */
 .game-container img{
   max-width: 100%;
   border-radius: 10px;

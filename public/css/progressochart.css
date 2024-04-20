@@ -1,37 +1,17 @@
+.chart-content{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
 .chart-container {
-    margin: 2em;
+    margin: 5%;
     padding: 20px;
-    border-left: 20px solid #F04D08;
+    border-left: 20px solid #5C8374;
     background: #FDFDFD;
     display: grid;
     align-items: center;
-    font-size: 1em; /* Tamanho de fonte padrão */
+    justify-content: center;
 }
 
-@media (min-width: 1000px) {
-    .chart-container {
-        aspect-ratio: 2/1; /* Ratio de 2 para 1 para telas maiores que 1000px */
-        font-size: 1.5em; /* Tamanho de fonte maior para telas maiores */
-    }
-}
 
-/* Media query para telas menores ou iguais a 1000px */
-@media (max-width: 1000px) {
-    .chart-container {
-        aspect-ratio: 1/1; /* Ratio de 1 para 1 para telas menores ou iguais a 1000px */
-        font-size: 1em; /* Tamanho de fonte menor para telas menores */
-    }
-}
-
-.chart-container h1 {
-    margin: 0; /* Remove margem padrão */
-    color: #0E0838;
-    text-align: center; /* Centraliza o texto */
-    margin-bottom: 20px;
-}
-
-.chart-container h2 {
-    color: #0E0838;
-    font-size: 1em; /* Tamanho de fonte padrão para h2 */
-    margin-top: 2em; /* Margem superior maior para h2 */
-}

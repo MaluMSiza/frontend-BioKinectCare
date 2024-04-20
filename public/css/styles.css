@@ -4,11 +4,7 @@
 @import url('sensor.css');
 @import url('progressochart.css');
 @import url('perfil.css');
-@import url('calibrate.css');
 @import url('home.css');
-@import url('paginaInicial.css');
-
-/* Reset de estilos para remover margens e preenchimento padrão */
 body,
 form {
     margin: 0;
@@ -16,22 +12,23 @@ form {
     box-sizing: border-box;
 }
 body {
-    background-color: #0E0838;
     font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, #040D12, #183D3D);
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
-h2 {
+h1,h2 {
     align-items: center;
-    color: #0E0838;
+    color: #183D3D;
     text-align: center;
+    font-weight: bold;
 }
-
-/* Estilização dos botões "Primary Button" e "Secondary Button" */
 .primary-button,
 .secondary-button {
     display: flex;
     justify-content: center;
-    /* Centraliza os elementos horizontalmente */
     width: 100%;
     height: 38px;
     padding: 10px 20px;
@@ -40,84 +37,60 @@ h2 {
     gap: 10px;
     flex-shrink: 0;
 }
-
 .primary-button {
-    background: #FF7313;
+    background: #183D3D;
     border: none;
     color: #fff;
 }
-
 .secondary-button {
     background-color: transparent;
-    border: 1px solid #FF7313;
-    color: #FF7313;
+    border: 1px solid #5C8374;
+    color: #5C8374;
 }
-
 .primary-button:hover {
     transform: scale(1.05);
-    border: 1px solid #FF7313;
+    background-color: #5C8374;;
 }
-
 .secondary-button:hover {
-    background: #FF7313;
+    background: #5C8374;
     color: #fff;
 }
-
-/* estilizacao para os inputs*/
 input {
-    border: none;
-    border-bottom: 1px solid #FF7313;
-    outline: none;
+    border: 1px solid #5C8374;
+    border-radius: 8px;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 2rem;
     background-color: transparent;
 }
-
-/* Estilo quando o input está focado */
 input:focus {
-    border-bottom: 2px solid #FF7313;
+    border: 2px solid #040D12;
 }
-
-/* Estilos para o modal de registro */
 .modal {
     display: none;
-    /* Ocultar modal por padrão */
     position: fixed;
-    /* Posição fixa na tela */
     z-index: 1;
-    /* Posição do modal acima do conteúdo */
     left: 0;
     top: 0;
     width: 100%;
-    /* Largura total */
     height: 100%;
-    /* Altura total */
     background-color: rgba(0, 0, 0, 0.634);
-    /* Fundo escuro com transparência */
-    overflow: auto;
-    /* Permitir rolagem quando o conteúdo for muito grande */
 }
-
-/* Estilos para o conteúdo do modal */
 .modal-content {
     display: block;
     align-items: center;
     background-color: #fefefe;
-    /* Cor de fundo */
-    margin: 15% auto;
-    /* Centralizar verticalmente */
+    margin: 5% auto;
     padding: 20px;
-    border: 1px solid #FF7313;
-    border-radius: 8px;
+    border: 1px solid #5C8374;
+    border-radius: 20px;
     max-width: 400px;
     min-width: 250px;
 }
 #detailsSensorModal1{
     max-width: 80%;
 }
-
 .modal-content label,
 .modal-content input,
 .modal-content button {
@@ -126,32 +99,15 @@ input:focus {
     font-size: smaller;
     margin-bottom: 10px;
 }
-
-/* Estilos para o botão de fechar do modal */
-.close {
-    color: #ec0a0a;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .custom-select {
     margin: 20px;
     min-width: 10em;
-    border: 1px solid #FF7313;
-    border-radius: 5px; /* Borda arredondada */
-    padding: 5px 25px 5px 10px; /* Espaçamento interno para o texto */
-    appearance: none; /* Remove o estilo padrão do sistema */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFA500" width="18px" height="18px"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Setinha personalizada */
-    background-repeat: no-repeat; /* Não repete a imagem */
-    background-position: right 5px center; /* Posição da setinha */
-    background-size: 20px; /* Tamanho da setinha */
+    border: 1px solid #5C8374;
+    border-radius: 5px; 
+    padding: 5px 25px 5px 10px; 
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFA500" width="18px" height="18px"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 5px center; 
+    background-size: 20px; 
 }
-/*
