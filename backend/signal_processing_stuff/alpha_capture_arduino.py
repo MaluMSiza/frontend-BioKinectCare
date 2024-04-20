@@ -68,7 +68,7 @@ filename = f"{user}_{muscle}_{datetime.now().strftime('%Y_%m_%d')}.json"
 
 # Simplificando a estrutura do JSON
 capturas = {'Dados': []}
-
+#teste
 # Captura continuada, sem separação por fases
 duracoes = [5, 2, 3, 2, 3, 2, 3, 2]  # Preparação, Movimento 1, Descanso, Movimento 2, Descanso, Movimento 3, Descanso, Final
 instrucoes = [
