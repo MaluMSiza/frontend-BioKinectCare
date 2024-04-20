@@ -19,9 +19,14 @@ collection = conectar_banco()
 @app.route('/api/pacientes', methods=['POST'])
 def criar_paciente():
     data = request.json
+    novo_username = data["username"]
+
+    if collection.find_one({"username": novo_username}):
+        return jsonify({"mensagem": f"Erro ao inserir paciente. O username '{novo_username}' já está em uso, tente outro, como '{novo_username}123'."}), 400
+
     paciente = {
         "nome_completo": data["nome_completo"],
-        "cpf": data["cpf"],
+        "username": novo_username,
         "data_nascimento": datetime.strptime(data["data_nascimento"], "%Y-%m-%d"),
         "musculo": data["musculo"],
         "senha" : data["senha"],
@@ -45,10 +50,10 @@ def listar_pacientes():
     
     return jsonify(pacientes)
 
-@app.route('/api/pacientes/<cpf>', methods=['PUT'])
-def atualizar_paciente(cpf):
+@app.route('/api/pacientes/<username>', methods=['PUT'])
+def atualizar_paciente(username):
     data = request.json
-    filtro = {"cpf": cpf}
+    filtro = {"username": username}
     atualizacao = {
         "$set": {
             "nome_completo": data["nome_completo"],
@@ -64,37 +69,37 @@ def atualizar_paciente(cpf):
         if result.modified_count > 0:
             return jsonify({"mensagem": "Paciente atualizado com sucesso"})
         else:
-            return jsonify({"mensagem": "Nenhum paciente foi atualizado. Verifique o CPF."})
+            return jsonify({"mensagem": "Nenhum paciente foi atualizado. Verifique o Username."})
     except Exception as e:
         return jsonify({"mensagem": "Erro ao atualizar paciente", "erro": str(e)})
 
-@app.route('/api/pacientes/<cpf>', methods=['DELETE'])
-def deletar_paciente(cpf):
-    filtro = {"cpf": cpf}
+@app.route('/api/pacientes/<username>', methods=['DELETE'])
+def deletar_paciente(username):
+    filtro = {"username": username}
     
     try:
         result = collection.delete_one(filtro)
         if result.deleted_count > 0:
             return jsonify({"mensagem": "Paciente deletado com sucesso"})
         else:
-            return jsonify({"mensagem": "Nenhum paciente foi deletado. Verifique o CPF."})
+            return jsonify({"mensagem": "Nenhum paciente foi deletado. Verifique o Username."})
     except Exception as e:
         return jsonify({"mensagem": "Erro ao deletar paciente", "erro": str(e)})
 
 @app.route('/api/login', methods=['POST'])
 def fazer_login():
     data = request.json
-    cpf = data.get("cpf")
+    username = data.get("username")
     senha = data.get("senha")
 
     try:
         # Verifique se o usuário existe no banco de dados e a senha está correta
-        paciente = collection.find_one({"cpf": cpf, "senha": senha})
+        paciente = collection.find_one({"username": username, "senha": senha})
 
         if paciente:
             # Crie um token JWT válido por 1 hora
             expiration_time = datetime.utcnow() + timedelta(hours=1)
-            token = jwt.encode({'cpf': cpf, 'exp': expiration_time}, app.config['SECRET_KEY'], algorithm='HS256')
+            token = jwt.encode({'username': username, 'exp': expiration_time}, app.config['SECRET_KEY'], algorithm='HS256')
             return jsonify(access_token=token), 200
         else:
             return jsonify({"mensagem": "Credenciais inválidas"}), 401
@@ -106,8 +111,8 @@ def rota_protegida():
     token = request.headers.get('Authorization').split(" ")[1]  # Obtemos o token do cabeçalho Authorization
     try:
         decoded_token = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
-        cpf = decoded_token['cpf']
-        return jsonify(logado_como=cpf), 200
+        username = decoded_token['username']
+        return jsonify(logado_como=username), 200
     except jwt.ExpiredSignatureError:
         return jsonify({"mensagem": "Token expirado"}), 401
     except jwt.InvalidTokenError:
