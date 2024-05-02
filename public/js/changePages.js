@@ -1,5 +1,3 @@
-
-//EVENTOS DE CADASTRO, LOGIN
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const registerButton = document.getElementById('registerButton');
@@ -7,19 +5,49 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeButton = document.getElementById('closeButton');
     const saveButton = document.getElementById('saveButton');
 
+    let username = '';
+
     loginForm.addEventListener('submit', function(event) {
+        const userLogin = document.getElementById('userLogin').value; // Corrigido aqui
+        const password = document.getElementById('passwordLogin').value;
+        const paciente = {
+            "username": userLogin,  // Corrigido aqui
+            "senha": password
+        };
         event.preventDefault(); 
-        window.location.href = 'home.html';
+        fetch('http://127.0.0.1:5000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(paciente)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.mensagem); 
+            if (data.mensagem === "Login realizado!") {
+                username = userLogin;  // Armazenar o username na variável global
+                localStorage.setItem('username', username);
+                window.location.href = 'home.html';
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao fazer login:', error);
+            alert("Erro ao fazer o login. Verifique o console para mais detalhes.");
+        });
     });
+
     registerButton.addEventListener('click', () => {
         registerModal.style.display = 'block';
     });
+
     closeButton.addEventListener('click', () => {
         registerModal.style.display = 'none';
     });
+
     saveButton.addEventListener('click', () => {
         const fullName = document.getElementById('fullName').value;
-        const cpf = document.getElementById('userName').value;
+        const userRegister = document.getElementById('username').value; // Corrigido aqui
         const birthdate = document.getElementById('birthdate').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
@@ -30,12 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const paciente = {
             "nome_completo": fullName,
-            "cpf": usserName,
+            "username": userRegister, // Corrigido aqui
             "data_nascimento": birthdate,
+            "musculo": '',
             "senha": password,
+            "calibragem": ''
         };
-
-        fetch('/api/pacientes', {
+ 
+        console.log(paciente);
+        fetch('http://127.0.0.1:5000/api/pacientes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,6 +86,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-
-

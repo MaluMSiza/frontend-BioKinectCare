@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from collections.abc import Mapping
 import jwt
 import sys
+from flask_cors import CORS
 
 sys.path.append('C:/Users/gabri/OneDrive/Documents/GitHub/frontend-BioKinectCare/backend')  # Substitua pelo caminho real
 
@@ -10,6 +11,7 @@ from banco.conexao import conectar_banco
 import logging
 
 app = Flask(__name__)
+CORS(app, origins='*')
 app.config['SECRET_KEY'] = 'secret'
 app.logger.setLevel(logging.DEBUG)
 
@@ -28,9 +30,9 @@ def criar_paciente():
         "nome_completo": data["nome_completo"],
         "username": novo_username,
         "data_nascimento": datetime.strptime(data["data_nascimento"], "%Y-%m-%d"),
-        "musculo": data["musculo"],
+        "musculo": [],
         "senha" : data["senha"],
-        "calibragem" : data["calibragem"]
+        "calibragem" : []
     }
     try:
         result = collection.insert_one(paciente)
@@ -39,39 +41,53 @@ def criar_paciente():
         return jsonify({"mensagem": "Erro ao inserir paciente", "erro": str(e)})
 
 
-# API para listar todos os pacientes
-@app.route('/api/pacientes', methods=['GET'])
-def listar_pacientes():
-    pacientes = list(collection.find())
-    
-    # Converter o ObjectId para uma representação string
-    for paciente in pacientes:
-        paciente['_id'] = str(paciente['_id'])
-    
-    return jsonify(pacientes)
+# API para listar todos os sensores
+from flask import request
 
-@app.route('/api/pacientes/<username>', methods=['PUT'])
-def atualizar_paciente(username):
-    data = request.json
+@app.route('/api/sensores/', methods=['GET'])
+def listar_sensores():
+    username = request.args.get('username')  # Obter o valor do parâmetro 'username' da consulta na URL
+    sensores = list(collection.find({"username": username}))
+
+    lista_sensores = []
+    for sensor in sensores:
+        for i in range(len(sensor["musculo"])):
+            sensor_info = {
+                "musculo": sensor["musculo"][i],
+                "calibragem": sensor["calibragem"][i]
+            }
+            lista_sensores.append(sensor_info)
+
+    print(lista_sensores)
+    return jsonify(lista_sensores)
+
+
+@app.route('/api/pacientes/', methods=['PUT'])
+def adicionar_musculo():
+    username = request.args.get('username')
     filtro = {"username": username}
+    data = collection.find_one(filtro)
+    musculo_novo = request.json.get('musculo')  # Supondo que o novo músculo esteja no corpo da requisição
     atualizacao = {
         "$set": {
             "nome_completo": data["nome_completo"],
-            "data_nascimento": datetime.strptime(data["data_nascimento"], "%Y-%m-%d"),
-            "musculo": data["musculo"],
+            "data_nascimento": data["data_nascimento"],
             "senha": data["senha"],
-            "calibragem": data["calibragem"]
+        },
+        "$push": {
+            "musculo": musculo_novo,
+            "calibragem": ''
         }
     }
     
     try:
         result = collection.update_one(filtro, atualizacao)
         if result.modified_count > 0:
-            return jsonify({"mensagem": "Paciente atualizado com sucesso"})
+            return jsonify({"mensagem": "Músculo adicionado com sucesso!"})
         else:
-            return jsonify({"mensagem": "Nenhum paciente foi atualizado. Verifique o Username."})
+            return jsonify({"mensagem": "Músculo não adicionado, verifique os campos!"})
     except Exception as e:
-        return jsonify({"mensagem": "Erro ao atualizar paciente", "erro": str(e)})
+        return jsonify({"mensagem": "Erro ao adicionar músculo", "erro": str(e)})
 
 @app.route('/api/pacientes/<username>', methods=['DELETE'])
 def deletar_paciente(username):
@@ -97,26 +113,11 @@ def fazer_login():
         paciente = collection.find_one({"username": username, "senha": senha})
 
         if paciente:
-            # Crie um token JWT válido por 1 hora
-            expiration_time = datetime.utcnow() + timedelta(hours=1)
-            token = jwt.encode({'username': username, 'exp': expiration_time}, app.config['SECRET_KEY'], algorithm='HS256')
-            return jsonify(access_token=token), 200
+            return jsonify({"mensagem": "Login realizado!"}), 200
         else:
             return jsonify({"mensagem": "Credenciais inválidas"}), 401
     except Exception as e:
         return jsonify({"mensagem": "Erro ao fazer login", "erro": str(e)}), 500
-
-@app.route('/api/protegido', methods=['GET'])
-def rota_protegida():
-    token = request.headers.get('Authorization').split(" ")[1]  # Obtemos o token do cabeçalho Authorization
-    try:
-        decoded_token = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
-        username = decoded_token['username']
-        return jsonify(logado_como=username), 200
-    except jwt.ExpiredSignatureError:
-        return jsonify({"mensagem": "Token expirado"}), 401
-    except jwt.InvalidTokenError:
-        return jsonify({"mensagem": "Token inválido"}), 401
 
 if __name__ == '__main__':
     app.run(debug=True)

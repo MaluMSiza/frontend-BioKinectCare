@@ -1,90 +1,34 @@
-const ListSensors = [
-    {
-        "id": 1,
-        "musculo": "BICEPS",
-        "activation_point": 0.75
-    },
-    {
-        "id": 2,
-        "musculo": "BICEPS",
-        "activation_point": 0.25
-    },
-    {
-        "id": 3,
-        "musculo": "TRICEPS",
-        "activation_point": 0.9
-    },
-    {
-        "id": 4,
-        "musculo": "TRICEPS",
-        "activation_point": 0.6
-    },
-    {
-        "id": 5,
-        "musculo": "BICEPS",
-        "activation_point": 0.4
-    }
-];
+const username = localStorage.getItem('username');
+console.log(username);
 
-function loadHeader() {
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            const headerContainer = document.createElement('div');
-            headerContainer.innerHTML = data;
+fetch(`http://127.0.0.1:5000/api/sensores/?username=${username}`, {
+    method: 'GET',
+})
+.then(response => response.json())
+.then(data => {
+    ListSensors = data;
 
-            // Adicione o conteúdo do cabeçalho ao início do corpo do documento
-            document.body.insertBefore(headerContainer, document.body.firstChild);
-            console.log('header carregada');
-
-            renderSensors();
-        })
-        .catch(error => console.error('Erro ao carregar o cabeçalho:', error));
-}
-
-document.addEventListener('DOMContentLoaded', loadHeader);
+    console.log(ListSensors);
+    renderSensors();
+})
+.catch(error => {
+    console.error('Erro ao obter lista de sensores:', error);
+});
 
 function renderSensors() {
     const sensorsBody = document.createElement('div');
     sensorsBody.className = 'content-container';
 
-    ListSensors.forEach(sensor => {
+    ListSensors.forEach((sensor, index) => {
         const sensorsContainer = document.createElement('div');
         sensorsContainer.className = 'sensor-container';
 
-        const labelsDiv = document.createElement('div');
-        const buttonsDiv = document.createElement('div');
+        const sensorInfo = document.createElement('h2');
+        sensorInfo.className = 'sensor-info';
+        sensorInfo.textContent = `Musculo - ${sensor.musculo}
+                                  Calibragem - ${sensor.calibragem}`;
 
-        const sensorId = document.createElement('h1');
-        sensorId.className = 'sensor';
-        sensorId.textContent = 'SENSOR: ' + sensor.id;
-
-        const sensorMuscle = document.createElement('h2');
-        sensorMuscle.className = 'sensor';
-        sensorMuscle.textContent = sensor.musculo;
-
-        // const sensorActivationPoint = document.createElement('h2');
-        // sensorActivationPoint.className = 'sensor';
-        // sensorActivationPoint.textContent = 'Ponto de Ativação: ' + sensor.activation_point + ' milivolts';
-
-        const calibrateButton = document.createElement('button');
-        calibrateButton.className = 'primary-button sensorButton';
-        calibrateButton.textContent = 'CALIBRAR';
-
-        const detailsButton = document.createElement('button');
-        detailsButton.className = 'primary-button detailsButton';
-        detailsButton.textContent = 'DETALHES';
-
-        labelsDiv.appendChild(sensorId);
-        labelsDiv.appendChild(sensorMuscle);
-        // labelsDiv.appendChild(sensorActivationPoint);
-
-        buttonsDiv.appendChild(calibrateButton);
-        buttonsDiv.appendChild(detailsButton);
-
-        sensorsContainer.appendChild(labelsDiv);
-        sensorsContainer.appendChild(buttonsDiv);
-
+        sensorsContainer.appendChild(sensorInfo);
         sensorsBody.appendChild(sensorsContainer);
     });
 
@@ -92,7 +36,34 @@ function renderSensors() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('saveButtonNew').addEventListener('click', () => {
+        const username = localStorage.getItem('username');
+        console.log(username);
 
+        const musculoSelecionado = document.getElementById('newMusculoCombobox').value;
+    
+        const data = {
+            musculo: musculoSelecionado
+        };
+    
+        fetch(`http://127.0.0.1:5000/api/pacientes/?username=${username}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.mensagem); // Exibir mensagem de retorno da API
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Erro ao adicionar músculo:', error);
+            alert("Erro ao adicionar músculo. Verifique o console para mais detalhes.");
+        });
+    });
+        
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('sensorButton')) {
             document.getElementById('calibrarSensorModal').style.display = 'block';

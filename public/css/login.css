@@ -21,4 +21,9 @@
     flex-direction: column;
     justify-content: center;
 }
+.login-container,
+.login-container input[type=text],
+.login-container input[type=password]{
+    color: #FFFFFF;
+}
 

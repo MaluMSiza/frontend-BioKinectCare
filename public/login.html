@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body id="loginBody"
+<body id="loginBody">
     <div class="login-container">
         <img src="css/imgs/logotipo.png" alt="Logotipo" class="logo-login">
         <form id="loginForm">
-            <input type="text" placeholder="Nome de usuário">
-            <input type="password" placeholder="Senha"><br>
+            <input type="text" id="userLogin" placeholder="Nome de usuário">
+            <input type="password" id="passwordLogin" placeholder="Senha"><br>
             <button class="primary-button" type="submit">ENTRAR</button>
             <button id="registerButton" class="secondary-button" type="button">REGISTRE-SE</button>
         </form>
-    </div>
     </div>
     <div id="registerModal" class="modal">
         <div class="modal-content">
             <h2>CADASTRO</h2>
             <label for="fullName">NOME COMPLETO</label>
             <input type="text" id="fullName" placeholder="Nome Completo" class="custom-input">
-            <label for="userName">NOME DE USUÁRIO</label>
-            <input type="text" id="userName" placeholder="NOME DE USUARIO">
+            <label for="username">NOME DE USUÁRIO</label>
+            <input type="text" id="username" placeholder="NOME DE USUARIO">
             <label for="birthdate">DATA DE NASCIMENTO</label>
             <input type="date" id="birthdate">
             <label for="password">SENHA</label>
@@ -34,6 +33,6 @@
             <button id="closeButton" class="secondary-button">FECHAR</button>
         </div>
     </div>
+    <script src="js/changePages.js" type="text/javascript"></script>
 </body>
-<script src="js/changePages.js" type="text/javascript"></script>
 </html>
