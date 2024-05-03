@@ -24,16 +24,39 @@ function renderSensors() {
         sensorsContainer.className = 'sensor-container';
 
         const sensorInfo = document.createElement('h2');
-        sensorInfo.className = 'sensor-info';
-        sensorInfo.textContent = `Musculo - ${sensor.musculo}
-                                  Calibragem - ${sensor.calibragem}`;
+        sensorInfo.className = 'sensor';
+        sensorInfo.innerHTML  = `Sensor ${index + 1}: <br>
+        Músculo - ${sensor.musculo} <br>
+        Calibragem - ${sensor.calibragem}`;
+
+        const buttonContainer = document.createElement('div'); // Container para os botões
+        buttonContainer.className = 'button-container';
+
+        const detalhesButton = document.createElement('button');
+        detalhesButton.className = 'primary-button detailsButton';
+        detalhesButton.textContent = 'Detalhes';
+        detalhesButton.addEventListener('click', () => {
+            // Lógica para exibir detalhes
+        });
+
+        const calibrarButton = document.createElement('button');
+        calibrarButton.className = 'primary-button sensorButton';
+        calibrarButton.textContent = 'Calibrar';
+        calibrarButton.addEventListener('click', () => {
+            // Lógica para calibrar sensor
+        });
+
+        buttonContainer.appendChild(detalhesButton);
+        buttonContainer.appendChild(calibrarButton);
 
         sensorsContainer.appendChild(sensorInfo);
+        sensorsContainer.appendChild(buttonContainer); // Adicionando o container dos botões
         sensorsBody.appendChild(sensorsContainer);
     });
 
     document.body.appendChild(sensorsBody);
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('saveButtonNew').addEventListener('click', () => {
