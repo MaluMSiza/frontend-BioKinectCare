@@ -1,6 +1,6 @@
 
-function loadHeader() {
-    fetch('header.html')
+function loadMenu() {
+    fetch('menu.html')
         .then(response => response.text())
         .then(data => {
             document.body.innerHTML = data + document.body.innerHTML;
@@ -12,7 +12,7 @@ function loadHeader() {
         .catch(error => console.error('Erro ao carregar o cabeçalho:', error));
 }
 
-document.addEventListener('DOMContentLoaded', loadHeader);
+document.addEventListener('DOMContentLoaded', loadMenu);
 
 // Função para configurar os ouvintes de perfil
 function configureProfileListeners() {

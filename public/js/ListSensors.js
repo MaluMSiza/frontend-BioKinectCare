@@ -26,8 +26,8 @@ const ListSensors = [
     }
 ];
 
-function loadHeader() {
-    fetch('header.html')
+function loadMenu() {
+    fetch('menu.html')
         .then(response => response.text())
         .then(data => {
             const headerContainer = document.createElement('div');
@@ -42,7 +42,7 @@ function loadHeader() {
         .catch(error => console.error('Erro ao carregar o cabeçalho:', error));
 }
 
-document.addEventListener('DOMContentLoaded', loadHeader);
+document.addEventListener('DOMContentLoaded', loadMenu);
 
 function renderSensors() {
     const sensorsBody = document.createElement('div');
@@ -133,4 +133,30 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('closeButtonNew').addEventListener('click', () => {
         document.getElementById('newSensorModal').style.display = 'none';
     });
+    document.getElementById('saveButtonCalibra').addEventListener('click', function() {
+        var count = 0;
+        var maxCount = 5;
+        var calibrarModal = document.getElementById('calibrarSensorModal');
+        var imageModal = document.getElementById('imageDisplayModal');
+        var displayImage = document.getElementById('displayImage');
+        calibrarModal.style.display = 'none';
+        
+        function toggleImages() {
+            if (count < maxCount) {
+                var imageName = count % 2 === 0 ? "css/imgs/contra.png" : "css/imgs/relax.png";
+                displayImage.src = imageName;
+                setTimeout(function() {
+                    imageModal.style.display = 'block';
+                    count++;
+                    toggleImages(); // Recursively call to continue the sequence
+                }, 2000); // Time interval each image is shown
+            } else {
+                alert('Calibração concluída');
+                imageModal.style.display = 'none'; // Show the image modal
+            }
+        }
+        
+        toggleImages(); // Initiate the image toggle sequence
+    });
+    
 });

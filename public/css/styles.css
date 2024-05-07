@@ -1,9 +1,8 @@
 @import url('login.css');
 @import url('games.css');
-@import url('header.css');
+@import url('menu.css');
 @import url('sensor.css');
 @import url('progressochart.css');
-@import url('perfil.css');
 @import url('home.css');
 body,
 form {
