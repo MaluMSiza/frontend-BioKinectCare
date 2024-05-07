@@ -1,11 +1,10 @@
 from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 from collections.abc import Mapping
-import jwt
 import sys
 from flask_cors import CORS
 
-sys.path.append('C:/Users/gabri/OneDrive/Documents/GitHub/frontend-BioKinectCare/backend')  # Substitua pelo caminho real
+sys.path.append('C:/Users/ariyoshh/Desktop/BioKinectCare/backend')  # Substitua pelo caminho real
 
 from banco.conexao import conectar_banco
 import logging

@@ -15,6 +15,15 @@ fetch(`http://127.0.0.1:5000/api/sensores/?username=${username}`, {
     console.error('Erro ao obter lista de sensores:', error);
 });
 
+fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.innerHTML = data + document.body.innerHTML;
+            console.log('header carregada');
+            
+        })
+        .catch(error => console.error('Erro ao carregar o cabeçalho:', error));
+
 function renderSensors() {
     const sensorsBody = document.createElement('div');
     sensorsBody.className = 'content-container';
